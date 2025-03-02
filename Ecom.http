@@ -1,0 +1,11 @@
+@Ecom_HostAddress = http://localhost:5195
+
+GET {{Ecom_HostAddress}}/todos/
+Accept: application/json
+
+###
+
+GET {{Ecom_HostAddress}}/todos/1
+Accept: application/json
+
+###
