@@ -14,7 +14,11 @@ namespace Ecom.Models
 
         [Required]
         [StringLength(100)]
-        public string Password { get; set; }
+        public string PasswordHash { get; set; }
+
+        [EmailAddress]
+        [Required]
+        public string Email { get; set; } = string.Empty;
 
     }
 }

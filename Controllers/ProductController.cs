@@ -1,4 +1,5 @@
-﻿using Ecom.InterFaces;
+﻿using AutoMapper;
+using Ecom.DTOS;
 using Ecom.InterFaces.Ecom.InterFaces;
 using Ecom.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -10,17 +11,20 @@ namespace Ecom.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IProductRepository _productRepo;
+        private readonly IMapper _mapper;
 
-        public ProductsController(IProductRepository productRepo)
+        public ProductsController(IProductRepository productRepo, IMapper mapper)
         {
             _productRepo = productRepo;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult GetProducts()
         {
             var products = _productRepo.GetProducts();
-            return Ok(products);
+            List<ProductDto> productsDto = _mapper.Map<List<ProductDto>>(products);
+            return Ok(productsDto);
         }
 
         [HttpGet("{id}")]

@@ -1,7 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Ecom.Models
+﻿namespace Ecom.Models
 {
    
         public class Product
@@ -11,7 +8,5 @@ namespace Ecom.Models
             public string Description { get; set; } = string.Empty;
             public string Image { get; set; }
             public decimal Price { get; set; }
-        
-
     }
 }

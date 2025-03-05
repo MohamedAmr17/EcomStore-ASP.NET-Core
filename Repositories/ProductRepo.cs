@@ -1,7 +1,5 @@
-﻿using Ecom.InterFaces;
-using Ecom.InterFaces.Ecom.InterFaces;
+﻿using Ecom.InterFaces.Ecom.InterFaces;
 using Ecom.Models;
-using Microsoft.EntityFrameworkCore;
 
 namespace Ecom.Repositories
 {

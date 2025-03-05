@@ -12,12 +12,16 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 
+
+builder.Services.AddAutoMapper(typeof(Program));
+
 // Register DbContext
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 
 // Register Repository
 builder.Services.AddScoped<IProductRepository, ProductRepo>();
+builder.Services.AddScoped<IUserRepository, UserRepo>();
 
 // Configure JSON serialization
 builder.Services.ConfigureHttpJsonOptions(options =>
@@ -36,14 +40,15 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseAuthorization();
 
-// Map controller routes
 
 app.MapControllers();
 
 app.Run();
-// Keep this for JSON serialization
+
 [JsonSerializable(typeof(Product))]
 [JsonSerializable(typeof(List<Product>))]
+[JsonSerializable(typeof(User))]
+[JsonSerializable(typeof(List<User>))]
 internal partial class AppJsonSerializerContext : JsonSerializerContext
 {
 }
